@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script src= "https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background">
+        <div id="app">
+            <h1>Calculadora Vue</h1>
+            <input type="text" v-model="caixatexto" placeholder="Digite">
+                <br>
+                <button id="clear" @click = "limpar()"> C </button>
+                <button @click = "val('*')">*</button>
+                <br>
+                <button @click = "val(7)"> 7 </button>
+                <button @click = "val(8)"> 8 </button>
+                <button @click = "val(9)"> 9 </button>
+                <button @click = "val('+')">+</button>    
+                <br>
+                <button @click = "val(4)"> 4 </button>
+                <button @click = "val(5)"> 5 </button>
+                <button @click = "val(6)"> 6 </button>
+                <button @click = "val('-')">-</button>
+                <br>
+                <button @click = "val(1)"> 1 </button>
+                <button @click = "val(2)"> 2 </button>
+                <button @click = "val(3)"> 3 </button>
+                <button @click = "val('/')">/</button>
+                <br> 
+                <button id="zero" @click = "val(0)"> 0 </button>
+                <button @click = "val('.')"> . </button>
+                <button id="calc" @click = "calcular()">=</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const { createApp } = Vue;
+
+    createApp({
+        data() {
+            return{
+                caixatexto: "",
+            }
+        },
+
+        methods: {
+            val: function(valor) {
+                this.caixatexto += valor;
+            },
+
+            calcular: function(){
+                this.caixatexto = eval(this.caixatexto)
+            },
+
+            limpar: function(){
+                this.caixatexto = ""
+            }
+        }
+    }).mount("#app")
+</script>
